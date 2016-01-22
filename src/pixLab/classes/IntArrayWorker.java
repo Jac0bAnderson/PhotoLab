@@ -64,6 +64,54 @@ public class IntArrayWorker
   }
   
   /**
+   * method to count 
+ * @return 
+   */
+  
+  public int getCount(int finTotal)
+  {
+	  
+	  finTotal = 0; 
+	 for (int [] rowArray : matrix)
+	 {
+		 for(int item : rowArray)
+		 {
+			 if(item == 1)
+			 {
+				 finTotal = finTotal +item;
+			 }
+		 }
+	 }
+	 return finTotal;
+  }
+  
+  /**
+   * method getLargest
+   */
+  public int getLargest(int largestVar)
+  {
+	  largestVar = 0;
+	  
+	  for(int [] rowArray : matrix)
+	  {
+		  for (int large : rowArray)
+		  {
+			  if (largestVar <= large)
+			  {
+				  largestVar = large;
+			  }
+			  
+			  
+		  }
+		  
+		  
+	  }
+	  
+	  
+	  return largestVar;
+  }
+  
+  /**
    * print the values in the array in rows and columns
    */
   public void print()
