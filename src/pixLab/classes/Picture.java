@@ -100,6 +100,18 @@ public class Picture extends SimplePicture
       }
     }
   }
+  public void  zeroGreen()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	    for (Pixel[] rowArray : pixels)
+	    {
+	      for (Pixel pixelObj : rowArray)
+	      {
+	        pixelObj.setGreen(0);
+	      }
+	    }
+  }
+  
   public void zeroRed()
   {
 	  Pixel[][] original = this.getPixels2D();
@@ -114,6 +126,23 @@ public class Picture extends SimplePicture
 	  }
   }
   
+  public void keepOnlyBlue()
+  {
+	  zeroRed();
+	  zeroGreen();
+	  
+  }
+  
+  public void keepOnlyRed()
+  {
+	  zeroGreen();
+	  zeroBlue();
+  }
+  public void keepOnlyGreen()
+  {
+	  zeroBlue();
+	  zeroRed();
+  }
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
     * from left to right */
@@ -206,6 +235,25 @@ public class Picture extends SimplePicture
     this.write("collage.jpg");
   }
   
+  public void mirrorHorizontal()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	    Pixel leftPixel = null;
+	    Pixel rightPixel = null;
+	    int width = pixels[0].length;
+	    for (int row = 0; row < pixels.length; row++)
+	    {
+	      for (int col = 0; col < width / 2; col++)
+	      {
+	        leftPixel = pixels[row][col];
+	        rightPixel = pixels[row][width - 1 - col];
+	        rightPixel.setColor(leftPixel.getColor());
+	      }
+	    } 
+	   
+	   
+	   
+  }
   
   /** Method to show large changes in color 
     * @param edgeDist the distance for finding edges
@@ -240,11 +288,10 @@ public class Picture extends SimplePicture
   public static void main(String[] args) 
   {
 	   
-    Picture beach = new Picture("snowman.jpg");
+    Picture beach = new Picture("keyboard.jpg");
     beach.explore();
-    beach.zeroBlue();
+    beach.mirrorVertical();
     beach.explore();
-    beach.createCollage();
   }
   
 } // this } is the end of class Picture, put all new methods before this
