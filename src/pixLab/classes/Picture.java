@@ -287,20 +287,7 @@ public class Picture extends SimplePicture
   }
   public void mirrorHorizontal()
   {
-	  Pixel[][] pixels = this.getPixels2D();
-	    Pixel leftPixel = null;
-	    Pixel rightPixel = null;
-	    int width = pixels[0].length;
-	    for (int row = 0; row < pixels.length; row++)
-	    {
-	      for (int col = 0; col < width / 2; col++)
-	      {
-	        leftPixel = pixels[row][col];
-	        rightPixel = pixels[row][width - 1 - col];
-	        rightPixel.setColor(leftPixel.getColor());
-	      }
-	    } 
-	   
+		   
 	   
 	   
   }
@@ -330,7 +317,45 @@ public class Picture extends SimplePicture
       }
     }
   }
-  
+  public void mirrorBottomToTop()
+  {//change one line to make it right
+	  
+	  Pixel[][] pixels = this.getPixels2D();
+	    Pixel leftPixel = null;
+	    Pixel rightPixel = null;
+	    int width = pixels[0].length;
+	    for (int row = 0; row < pixels.length; row++)
+	    {
+	      for (int col = 0; col < width / 2; col++)
+	      {
+	        leftPixel = pixels[width - 1 - row][col];
+	        rightPixel = pixels[row][width - 1 - col];
+	        rightPixel.setColor(leftPixel.getColor());
+	      }
+	    } 
+
+  }
+  public void mirrorArms()
+  {
+	  int mirrorPoint = 276;
+	    Pixel leftPixel = null;
+	    Pixel rightPixel = null;
+	    int count = 0;
+	    Pixel[][] pixels = this.getPixels2D();
+	    
+	    // loop through the rows
+	    for (int row = 171; row < 291; row++)
+	    {
+	      // loop from 13 to just before the mirror point
+	      for (int col = 110; col < mirrorPoint; col++)
+	      {
+	        
+	        leftPixel = pixels[row][col];      
+	        rightPixel = pixels[row]                       
+	                         [mirrorPoint - col + mirrorPoint];
+	        rightPixel.setColor(leftPixel.getColor());
+	      
+	      } } }
   
   /* Main method for testing - each class in Java can have a main 
    * method 
@@ -338,14 +363,11 @@ public class Picture extends SimplePicture
   public static void main(String[] args) 
   {
 	   
-    Picture beach = new Picture("water.jpg");
+    Picture beach = new Picture("snowman.jpg");
     beach.explore();
-    beach.edgeDetection(5);
-    beach.zeroRed();
-    beach.zeroGreen();
-    beach.keepOnlyBlue();
-    beach.createGoodCollage();
-    beach.photoSave();
+   
+    beach.mirrorArms();
+    
     beach.explore();
   }
   
