@@ -16,7 +16,7 @@ public class IntArrayWorker
    * Method to return the total 
    * @return the total of the values in the array
    */
-  public int getTotal()
+  public int getTotal()///////
   {
     int total = 0;
     for (int row = 0; row < matrix.length; row++)
@@ -68,7 +68,7 @@ public class IntArrayWorker
  * @return 
    */
   
-  public int getCount(int finTotal)
+  public int getCount(int finTotal)////////
   {
 	  
 	  finTotal = 0; 
@@ -88,23 +88,19 @@ public class IntArrayWorker
   /**
    * method getLargest
    */
-  public int getLargest(int largestVar)
+  public int getLargest(int largestVar)//////
   {
 	  largestVar = 0;
 	  
-	  for(int [] rowArray : matrix)
+	  for(int row = 0; row < matrix.length; row++)
 	  {
-		  for (int large : rowArray)
+		  for(int col = 0; col < matrix[0].length; col ++)
 		  {
-			  if (largestVar <= large)
+			  if(matrix[row][col] > largestVar)
 			  {
-				  largestVar = large;
+				  largestVar=matrix[row][col];
 			  }
-			  
-			  
 		  }
-		  
-		  
 	  }
 	  
 	  

@@ -35,7 +35,13 @@ public class PictureTester
     temple.mirrorTemple();
     temple.explore();
   }
-  
+  public static void testRandomColor()
+  {
+	  Picture randomCat = new Picture("caterpillar.jpg");
+	  randomCat.explore();
+	  randomColor();
+	  randomCat.explore();
+  }
   /** Method to test the collage method */
   public static void testCollage()
   {
@@ -59,6 +65,7 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
+	  testRandomColor();
     testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
