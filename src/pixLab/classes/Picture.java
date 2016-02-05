@@ -351,29 +351,55 @@ public class Picture extends SimplePicture
   
   public void mirrorArms()
   {
-	  int mirrorPoint = 10;
-	    Pixel leftPixel = null;
-	    Pixel rightPixel = null;
-	    int count = 0;
-	    Pixel[][] pixels = this.getPixels2D();
-	    
-	    // loop through the rows
-	    for (int row = 174; row < 197; row++)
-	    {
-	      // loop from 13 to just before the mirror point
-	      for (int col = 1; col < mirrorPoint; col++)
-	      {
-	        
-	        leftPixel = pixels[row][col];      
-	        rightPixel = pixels[row]                       
-	                         [mirrorPoint - col + mirrorPoint];
-	        rightPixel.setColor(leftPixel.getColor());
-	      }
-	    }  
+	  Pixel[][] pixels = this.getPixels2D();
+	  Pixel TopPixel = null;
+	  Pixel BottomPixel = null;
+	  int point1 = 220;
+	  int point2 = 275;
+	  for(int row = 160; row < point1; row++)
+	  {
+		  for(int col = 0; col < pixels[0].length; col++)
+		  {
+			  TopPixel = pixels[row][col];
+			  BottomPixel = pixels[point1 - row + point1][col];
+			  BottomPixel.setColor(TopPixel.getColor());
+		  }
+	  }
+	  
+	  for(int row = 255; row < point2; row++)
+	  {
+		  for(int col = 0; col < pixels[0].length; col++)
+		  {
+			  TopPixel = pixels[row][col];
+			  BottomPixel = pixels[point2 - row + point2][col];
+			  BottomPixel.setColor(TopPixel.getColor());
+		  }
+	  }
+  }
+  public void mirrorGull()//240 300    //240 340
+  {  Pixel[][] pixels = this.getPixels2D();
+	  Pixel topPixel = null;
+	  Pixel bottomPixel = null;
+	  
+	  for(int row = 240; row > 300; row++ )
+	  {
+		  for(int col = 240; col > 340; col++ )
+		  {int sea2 = 0;int sea3 =0;
+			  
+			  topPixel = pixels[sea2][sea3];
+			  bottomPixel = pixels[sea2 +1][sea3 +1];
+			  bottomPixel.setColor(topPixel.getColor());
+			  sea2 ++; sea3++;
+			  
+		  }
+	  }
+	  
+	  
   }
   public void fixUnderwater()
   {
-	  
+	  zeroRed();
+	  zeroBlue();
   }
   
   /* Main method for testing - each class in Java can have a main 
@@ -382,12 +408,12 @@ public class Picture extends SimplePicture
   public static void main(String[] args) 
   {
 	   
-    Picture beach = new Picture("snowman.jpg");
+    Picture beach = new Picture("water.jpg");
     beach.explore();
   
-    beach.mirrorArms();
+    beach.fixUnderwater();
     
-    beach.explore();
+   beach.explore();
   }
   
 } // this } is the end of class Picture, put all new methods before this

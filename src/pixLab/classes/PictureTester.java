@@ -39,7 +39,7 @@ public class PictureTester
   {
 	  Picture randomCat = new Picture("caterpillar.jpg");
 	  randomCat.explore();
-	  randomColor();
+	 // randomColor();
 	  randomCat.explore();
   }
   /** Method to test the collage method */
@@ -65,11 +65,11 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-	  testRandomColor();
-    testZeroBlue();
-    //testKeepOnlyBlue();
-    //testKeepOnlyRed();
-    //testKeepOnlyGreen();
+	 // testRandomColor();
+   //testZeroBlue();
+   // testKeepOnlyBlue();
+   // testKeepOnlyRed();
+   // testKeepOnlyGreen();
     //testNegate();
     //testGrayscale();
     //testFixUnderwater();
